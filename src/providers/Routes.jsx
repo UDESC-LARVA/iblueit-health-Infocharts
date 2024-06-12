@@ -94,7 +94,7 @@ const routes = [{
 	privated: true,
 },{
 	path: pathRoutes.GAME_CONFIGURATION_CREATE,
-	title: 'Criar configurações de jogo',
+	title: 'Definir parâmetros do Exergame',
 	component: () => (<GameConfigurationCreatePage />),
 	privated: true,
 }, {

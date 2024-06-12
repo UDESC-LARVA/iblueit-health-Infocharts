@@ -149,10 +149,10 @@ const MenuItens = ({ permission, patientList }) => {
               position={5}
               openCategoryPosition={openCategoryPosition}
               setOpenCategoryPosition={setOpenCategoryPosition}
-              title="Configuração do jogo"
+              title="Configuração da Sessão"
               icon={<SportsEsportsIcon sx={{ fontSize: 17 }} />}
               submenus={[
-                { title: "Criar", path: pathRoutes.GAME_CONFIGURATION_CREATE, icon: <AddIcon sx={{ fontSize: 17 }} /> },
+                { title: "Definir", path: pathRoutes.GAME_CONFIGURATION_CREATE, icon: <AddIcon sx={{ fontSize: 17 }} /> },
               ]}
             />
             <MenuItemTemplate

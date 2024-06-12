@@ -167,7 +167,7 @@ const GameConfigurationCreatePage = () => {
       }}
     >
       <Typography variant="h2" sx={{ fontSize: 20, fontWeight: "bold", letterSpacing: "1px", color: '#11192A' }}>
-        Configuração de jogo para o paciente
+        Parâmetros do Exergame para Sessão
       </Typography>
 
       <Box
@@ -293,7 +293,7 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Incremento performance (Altura)" margin="normal" type='number' name="heightIncrement" id='heightIncrement' color="borderInput" inputProps={{ step: "0.1" }} InputProps={{ classes: { input: classes.input } }} value={heightIncrement}
+            <TextField sx={{ width: '90%' }} required label="Degrau de Ajuste de Altura do Alvo" margin="normal" type='number' name="heightIncrement" id='heightIncrement' color="borderInput" inputProps={{ step: "0.1" }} InputProps={{ classes: { input: classes.input } }} value={heightIncrement}
               onChange={(e) => maxAndMinInput(setHeightIncrement, e, 1, 0)} />
           </Box>
         </Box>
@@ -311,7 +311,7 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Elevações necessárias (Altura)" margin="normal" type='number' name="heightUpThreshold" id='heightUpThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={heightUpThreshold}
+            <TextField sx={{ width: '90%' }} required label="Número Alvos coletados para progressão" margin="normal" type='number' name="heightUpThreshold" id='heightUpThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={heightUpThreshold}
               onChange={(e) => maxAndMinInput(setHeightUpThreshold, e, 5, 0)} />
           </Box>
         </Box>
@@ -329,7 +329,7 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Descidas necessárias (Altura)" margin="normal" type='number' name="heightDownThreshold" id='heightDownThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={heightDownThreshold}
+            <TextField sx={{ width: '90%' }} required label="Número falhas em Alvos para regressão" margin="normal" type='number' name="heightDownThreshold" id='heightDownThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={heightDownThreshold}
               onChange={(e) => maxAndMinInput(setHeightDownThreshold, e, 5, 0)} />
           </Box>
         </Box>
@@ -347,7 +347,7 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Incremento performance (Tamanho)" margin="normal" type='number' name="sizeIncrement" id='sizeIncrement' color="borderInput" inputProps={{ step: "0.1" }} InputProps={{ classes: { input: classes.input } }} value={sizeIncrement}
+            <TextField sx={{ width: '90%' }} required label="Degrau de Ajuste de Tamanho Obstáculo" margin="normal" type='number' name="sizeIncrement" id='sizeIncrement' color="borderInput" inputProps={{ step: "0.1" }} InputProps={{ classes: { input: classes.input } }} value={sizeIncrement}
               onChange={(e) => maxAndMinInput(setSizeIncrement, e, 1, 0)} />
           </Box>
         </Box>
@@ -365,7 +365,7 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Elevações necessárias (Tamanho)" margin="normal" type='number' name="sizeUpThreshold" id='sizeUpThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={sizeUpThreshold}
+            <TextField sx={{ width: '90%' }} required label="Número Obstáculos desviados para progressão" margin="normal" type='number' name="sizeUpThreshold" id='sizeUpThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={sizeUpThreshold}
               onChange={(e) => maxAndMinInput(setSizeUpThreshold, e, 5, 0)} />
           </Box>
         </Box>
@@ -383,7 +383,7 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Descidas necessárias (Tamanho)" margin="normal" type='number' name="sizeDownThreshold" id='sizeDownThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={sizeDownThreshold}
+            <TextField sx={{ width: '90%' }} required label="Número falhas em Obstáculos para regressão" margin="normal" type='number' name="sizeDownThreshold" id='sizeDownThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={sizeDownThreshold}
               onChange={(e) => maxAndMinInput(setSizeDownThreshold, e, 5, 0)} />
           </Box>
         </Box>
@@ -427,7 +427,7 @@ const GameConfigurationCreatePage = () => {
           sx={{ mt: 3, mb: 2 }}
           className={classes.button}
         >
-          Salvar Configuração
+          Salvar Parâmetros
         </Button>
       </Box>
       <Typography variant="h2" sx={{ mt: 4, fontSize: 20, fontWeight: "bold", letterSpacing: "1px" }}>
