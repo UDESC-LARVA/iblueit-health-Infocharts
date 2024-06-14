@@ -120,7 +120,7 @@ const MenuItens = ({ permission, patientList }) => {
           position={4}
           openCategoryPosition={openCategoryPosition}
           setOpenCategoryPosition={setOpenCategoryPosition}
-          title="Plataforma"
+          title="I Blue It"
           icon={<ExtensionIcon sx={{ fontSize: 17 }} />}
           submenus={[
             { title: "Resultados", path: pathRoutes.PLATFORM_RESULTS, icon: <DeviceHubIcon sx={{ fontSize: 17 }} /> },
@@ -149,7 +149,7 @@ const MenuItens = ({ permission, patientList }) => {
               position={5}
               openCategoryPosition={openCategoryPosition}
               setOpenCategoryPosition={setOpenCategoryPosition}
-              title="Configuração da Sessão"
+              title="Sessão"
               icon={<SportsEsportsIcon sx={{ fontSize: 17 }} />}
               submenus={[
                 { title: "Definir", path: pathRoutes.GAME_CONFIGURATION_CREATE, icon: <AddIcon sx={{ fontSize: 17 }} /> },
@@ -159,10 +159,10 @@ const MenuItens = ({ permission, patientList }) => {
               position={6}
               openCategoryPosition={openCategoryPosition}
               setOpenCategoryPosition={setOpenCategoryPosition}
-              title="Paciente"
+              title="Conta do Paciente"
               icon={<PersonIcon sx={{ fontSize: 17 }} />}
               submenus={[
-                { title: "Conta do Paciente", path: pathRoutes.PATIENT_ACCOUNT, icon: <AddIcon sx={{ fontSize: 17 }} /> },
+                { title: "Definir", path: pathRoutes.PATIENT_ACCOUNT, icon: <AddIcon sx={{ fontSize: 17 }} /> },
               ]}
             />
           </>

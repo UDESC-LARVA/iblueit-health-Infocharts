@@ -70,57 +70,57 @@ const GameParameterCard = ({ gameParameter, index=null, selectNeighborInformatio
         /> */}
         <MeasureBox
           isLeft={false}
-          title='Nível do Exergame'
+          title='Nível'
           Idname = {`level${index}`}
           value={`${gameParameter.level ? gameParameter.level.toFixed(0) : ''}`}
         />
         <MeasureBox
           isLeft={true}
-          title='Número de Níveis do Exergame durante a Sessão'
+          title='Número de Níveis (10 objetos por nível)'
           Idname = {`Loops${index}`}
           value={`${gameParameter.Loops ? gameParameter.Loops.toFixed(0) : ''}`}
         />
         <MeasureBox
           isLeft={false}
-          title='Velocidade dos Objetos'
+          title='Velocidade (min: 1, max: 3)'
           Idname = {`objectSpeedFactor${index}`}
           value={`${gameParameter.ObjectSpeedFactor ? gameParameter.ObjectSpeedFactor.toFixed(2) : ''}`}
         />
         <MeasureBox
           isLeft={true}
-          title='Degrau de Ajuste de Altura do Alvo'
+          title='Degrau de Ajuste de Alvos (min: 0.0, max: 1.0)'
           Idname = {`heightIncrement${index}`}
           value={`${gameParameter.HeightIncrement ? gameParameter.HeightIncrement.toFixed(2) : ''}`}
         />
         <MeasureBox
           isLeft={false}
-          title='Número Alvos coletados para progressão'
+          title='Limiar de Sucesso em Alvos (min: 0, max: 10)'
           Idname = {`heightUpThreshold${index}`}
-          value={`${gameParameter.HeightUpThreshold ? gameParameter.HeightUpThreshold.toFixed(2) : ''}`}
+          value={`${gameParameter.HeightUpThreshold ? gameParameter.HeightUpThreshold.toFixed(0) : ''}`}
         />
         <MeasureBox
           isLeft={true}
-          title='Número falhas em Alvos para regressão'
+          title='Limiar de Falhas em Alvos (min: 0, max: 3)'
           Idname = {`heightDownThreshold${index}`}
-          value={`${gameParameter.HeightDownThreshold ? gameParameter.HeightDownThreshold.toFixed(2) : ''}`}
+          value={`${gameParameter.HeightDownThreshold ? gameParameter.HeightDownThreshold.toFixed(0) : ''}`}
         />
         <MeasureBox
           isLeft={false}
-          title='Degrau de Ajuste de Tamanho Obstáculo'
+          title='Degrau de Ajuste de Obstáculos (min: 0.0, max: 1.0)'
           Idname = {`sizeIncrement${index}`}
           value={`${gameParameter.SizeIncrement ? gameParameter.SizeIncrement.toFixed(2) : ''}`}
         />
         <MeasureBox
           isLeft={true}
-          title='Número Obstáculos desviados para progressão'
+          title='Limiar de Sucesso em Obstáculos (min: 0, max: 10)'
           Idname = {`sizeUpThreshold${index}`}
-          value={`${gameParameter.SizeUpThreshold ? gameParameter.SizeUpThreshold.toFixed(2) : ''}`}
+          value={`${gameParameter.SizeUpThreshold ? gameParameter.SizeUpThreshold.toFixed(0) : ''}`}
         />
         <MeasureBox
           isLeft={false}
-          title='Número falhas em Obstáculos para regressão'
+          title='Limar de Falhas em Obstáculos (min: 0, max: 3)'
           Idname = {`sizeDownThreshold${index}`}
-          value={`${gameParameter.SizeDownThreshold ? gameParameter.SizeDownThreshold.toFixed(2) : ''}`}
+          value={`${gameParameter.SizeDownThreshold ? gameParameter.SizeDownThreshold.toFixed(0) : ''}`}
         />
         {/* <MeasureBox
           isLeft={false}

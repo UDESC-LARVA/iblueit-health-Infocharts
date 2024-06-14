@@ -207,7 +207,7 @@ const GameConfigurationCreatePage = () => {
               onChange={(e) => maxAndMinInput(setPhase, e, 4, 1)} />
           </Box>
         </Box>
-        <Box
+        {/* <Box
           sx={{
             paddingLeft: 2,
             display: "flex",
@@ -224,7 +224,7 @@ const GameConfigurationCreatePage = () => {
             <TextField sx={{ width: '90%' }} required label="Nivel do Estágio" margin="normal" type='number' name="stageId" id='stageId' color="borderInput" InputProps={{ classes: { input: classes.input } }} value={stageId}
               onChange={(e) => maxAndMinInput(setStageId, e, 4, 1)} />
           </Box>
-        </Box>
+        </Box> */}
         <Box
           sx={{
             paddingLeft: 2,
@@ -239,7 +239,7 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Level" margin="normal" type='number' name="level" id='level' color="borderInput" InputProps={{ classes: { input: classes.input } }} value={level}
+            <TextField sx={{ width: '90%' }} required label="Nível" margin="normal" type='number' name="level" id='level' color="borderInput" InputProps={{ classes: { input: classes.input } }} value={level}
               onChange={(e) => maxAndMinInput(setLevel, e, 99, 1)} />
           </Box>
         </Box>
@@ -257,7 +257,7 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Loops" margin="normal" type='number' name="Loops" id='Loops' color="borderInput" InputProps={{ classes: { input: classes.input } }} value={Loops}
+            <TextField sx={{ width: '90%' }} required label="Número de Níveis" margin="normal" type='number' name="Loops" id='Loops' color="borderInput" InputProps={{ classes: { input: classes.input } }} value={Loops}
               onChange={(e) => maxAndMinInput(setLoops, e, 99, 1)} />
           </Box>
         </Box>
@@ -275,7 +275,7 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Velocidade dos Objetos" margin="normal" type='number' name="objectSpeedFactor" id='objectSpeedFactor' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={objectSpeedFactor}
+            <TextField sx={{ width: '90%' }} required label="Velocidade" margin="normal" type='number' name="objectSpeedFactor" id='objectSpeedFactor' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={objectSpeedFactor}
               onChange={(e) => maxAndMinInput(setObjectSpeedFactor, e, 3, 1)} />
           </Box>
         </Box>
@@ -293,7 +293,7 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Degrau de Ajuste de Altura do Alvo" margin="normal" type='number' name="heightIncrement" id='heightIncrement' color="borderInput" inputProps={{ step: "0.1" }} InputProps={{ classes: { input: classes.input } }} value={heightIncrement}
+            <TextField sx={{ width: '90%' }} required label="Degrau de Ajuste de Alvos" margin="normal" type='number' name="heightIncrement" id='heightIncrement' color="borderInput" inputProps={{ step: "0.1" }} InputProps={{ classes: { input: classes.input } }} value={heightIncrement}
               onChange={(e) => maxAndMinInput(setHeightIncrement, e, 1, 0)} />
           </Box>
         </Box>
@@ -311,8 +311,8 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Número Alvos coletados para progressão" margin="normal" type='number' name="heightUpThreshold" id='heightUpThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={heightUpThreshold}
-              onChange={(e) => maxAndMinInput(setHeightUpThreshold, e, 5, 0)} />
+            <TextField sx={{ width: '90%' }} required label="Limiar de Sucesso em Alvos" margin="normal" type='number' name="heightUpThreshold" id='heightUpThreshold' color="borderInput" inputProps={{ step: "1" }} InputProps={{ classes: { input: classes.input } }} value={heightUpThreshold}
+              onChange={(e) => maxAndMinInput(setHeightUpThreshold, e, 6, 0)} />
           </Box>
         </Box>
         <Box
@@ -329,8 +329,8 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Número falhas em Alvos para regressão" margin="normal" type='number' name="heightDownThreshold" id='heightDownThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={heightDownThreshold}
-              onChange={(e) => maxAndMinInput(setHeightDownThreshold, e, 5, 0)} />
+            <TextField sx={{ width: '90%' }} required label="Limiar de Falhas em Alvos" margin="normal" type='number' name="heightDownThreshold" id='heightDownThreshold' color="borderInput" inputProps={{ step: "1" }} InputProps={{ classes: { input: classes.input } }} value={heightDownThreshold}
+              onChange={(e) => maxAndMinInput(setHeightDownThreshold, e, 3, 0)} />
           </Box>
         </Box>
         <Box
@@ -347,7 +347,7 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Degrau de Ajuste de Tamanho Obstáculo" margin="normal" type='number' name="sizeIncrement" id='sizeIncrement' color="borderInput" inputProps={{ step: "0.1" }} InputProps={{ classes: { input: classes.input } }} value={sizeIncrement}
+            <TextField sx={{ width: '90%' }} required label="Degrau de Ajuste de Obstáculos" margin="normal" type='number' name="sizeIncrement" id='sizeIncrement' color="borderInput" inputProps={{ step: "0.1" }} InputProps={{ classes: { input: classes.input } }} value={sizeIncrement}
               onChange={(e) => maxAndMinInput(setSizeIncrement, e, 1, 0)} />
           </Box>
         </Box>
@@ -365,8 +365,8 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Número Obstáculos desviados para progressão" margin="normal" type='number' name="sizeUpThreshold" id='sizeUpThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={sizeUpThreshold}
-              onChange={(e) => maxAndMinInput(setSizeUpThreshold, e, 5, 0)} />
+            <TextField sx={{ width: '90%' }} required label="Limiar de Sucesso em Obstáculos" margin="normal" type='number' name="sizeUpThreshold" id='sizeUpThreshold' color="borderInput" inputProps={{ step: "1" }} InputProps={{ classes: { input: classes.input } }} value={sizeUpThreshold}
+              onChange={(e) => maxAndMinInput(setSizeUpThreshold, e, 6, 0)} />
           </Box>
         </Box>
         <Box
@@ -383,8 +383,8 @@ const GameConfigurationCreatePage = () => {
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Número falhas em Obstáculos para regressão" margin="normal" type='number' name="sizeDownThreshold" id='sizeDownThreshold' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={sizeDownThreshold}
-              onChange={(e) => maxAndMinInput(setSizeDownThreshold, e, 5, 0)} />
+            <TextField sx={{ width: '90%' }} required label="Limar de Falhas em Obstáculos" margin="normal" type='number' name="sizeDownThreshold" id='sizeDownThreshold' color="borderInput" inputProps={{ step: "1" }} InputProps={{ classes: { input: classes.input } }} value={sizeDownThreshold}
+              onChange={(e) => maxAndMinInput(setSizeDownThreshold, e, 3, 0)} />
           </Box>
         </Box>
         <Box
