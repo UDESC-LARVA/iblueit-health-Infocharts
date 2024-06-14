@@ -76,49 +76,49 @@ const GameParameterCard = ({ gameParameter, index=null, selectNeighborInformatio
         />
         <MeasureBox
           isLeft={true}
-          title='Número de Níveis (10 objetos por nível)'
+          title='Número de Níveis'
           Idname = {`Loops${index}`}
           value={`${gameParameter.Loops ? gameParameter.Loops.toFixed(0) : ''}`}
         />
         <MeasureBox
           isLeft={false}
-          title='Velocidade (min: 1, max: 3)'
+          title='Velocidade'
           Idname = {`objectSpeedFactor${index}`}
           value={`${gameParameter.ObjectSpeedFactor ? gameParameter.ObjectSpeedFactor.toFixed(2) : ''}`}
         />
         <MeasureBox
           isLeft={true}
-          title='Degrau de Ajuste de Alvos (min: 0.0, max: 1.0)'
+          title='Degrau de Ajuste de Alvos'
           Idname = {`heightIncrement${index}`}
           value={`${gameParameter.HeightIncrement ? gameParameter.HeightIncrement.toFixed(2) : ''}`}
         />
         <MeasureBox
           isLeft={false}
-          title='Limiar de Sucesso em Alvos (min: 0, max: 10)'
+          title='Limiar de Sucesso em Alvos'
           Idname = {`heightUpThreshold${index}`}
           value={`${gameParameter.HeightUpThreshold ? gameParameter.HeightUpThreshold.toFixed(0) : ''}`}
         />
         <MeasureBox
           isLeft={true}
-          title='Limiar de Falhas em Alvos (min: 0, max: 3)'
+          title='Limiar de Falhas em Alvos'
           Idname = {`heightDownThreshold${index}`}
           value={`${gameParameter.HeightDownThreshold ? gameParameter.HeightDownThreshold.toFixed(0) : ''}`}
         />
         <MeasureBox
           isLeft={false}
-          title='Degrau de Ajuste de Obstáculos (min: 0.0, max: 1.0)'
+          title='Degrau de Ajuste de Obstáculo'
           Idname = {`sizeIncrement${index}`}
           value={`${gameParameter.SizeIncrement ? gameParameter.SizeIncrement.toFixed(2) : ''}`}
         />
         <MeasureBox
           isLeft={true}
-          title='Limiar de Sucesso em Obstáculos (min: 0, max: 10)'
+          title='Limiar de Sucesso em Obstáculos'
           Idname = {`sizeUpThreshold${index}`}
           value={`${gameParameter.SizeUpThreshold ? gameParameter.SizeUpThreshold.toFixed(0) : ''}`}
         />
         <MeasureBox
           isLeft={false}
-          title='Limar de Falhas em Obstáculos (min: 0, max: 3)'
+          title='Limar de Falhas em Obstáculos'
           Idname = {`sizeDownThreshold${index}`}
           value={`${gameParameter.SizeDownThreshold ? gameParameter.SizeDownThreshold.toFixed(0) : ''}`}
         />

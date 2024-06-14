@@ -52,11 +52,11 @@ const GameConfigurationCreatePage = () => {
         setLoops(pacientGameParameter?.Loops || "");
         setObjectSpeedFactor(pacientGameParameter?.ObjectSpeedFactor?.$numberDecimal || "");
         setHeightIncrement(pacientGameParameter?.HeightIncrement?.$numberDecimal || "");
-        setHeightUpThreshold(pacientGameParameter?.HeightUpThreshold?.$numberDecimal || "");
-        setHeightDownThreshold(pacientGameParameter?.HeightDownThreshold?.$numberDecimal || "");
+        setHeightUpThreshold(pacientGameParameter?.HeightUpThreshold || "");
+        setHeightDownThreshold(pacientGameParameter?.HeightDownThreshold || "");
         setSizeIncrement(pacientGameParameter?.SizeIncrement?.$numberDecimal || "");
-        setSizeUpThreshold(pacientGameParameter?.SizeUpThreshold?.$numberDecimal || "");
-        setSizeDownThreshold(pacientGameParameter?.SizeDownThreshold?.$numberDecimal || "");
+        setSizeUpThreshold(pacientGameParameter?.SizeUpThreshold || "");
+        setSizeDownThreshold(pacientGameParameter?.SizeDownThresholdl || "");
         // setGameScript(stringifyGameScript || "");
       }
     }
@@ -153,6 +153,19 @@ const GameConfigurationCreatePage = () => {
     }
   }
 
+  const maxAndMinInputInt = (functionName, event, max = 5, min = 1) => {
+    const value = parseFloat(event.target.value, 10);
+    if (value > max) {
+      return functionName(max.toFixed(0));
+    } else if (value < min) {
+      return functionName(min.toFixed(0));
+    } else if (value) {
+      return functionName(value.toFixed(0));
+    } else {
+      return functionName("");
+    }
+  }
+
   return (
     <Box
       sx={{
@@ -196,15 +209,15 @@ const GameConfigurationCreatePage = () => {
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            borderRight: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
+            // borderRight: "1px solid #E9EAED",
+            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
             <TextField sx={{ width: '90%' }} required label="Fase" margin="normal" type='number' name="phase" id='phase' color="borderInput" InputProps={{ classes: { input: classes.input } }} value={phase}
-              onChange={(e) => maxAndMinInput(setPhase, e, 4, 1)} />
+              onChange={(e) => maxAndMinInputInt(setPhase, e, 4, 1)} />
           </Box>
         </Box>
         {/* <Box
@@ -232,15 +245,15 @@ const GameConfigurationCreatePage = () => {
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            borderRight: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
+            // borderRight: "1px solid #E9EAED",
+            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
             <TextField sx={{ width: '90%' }} required label="Nível" margin="normal" type='number' name="level" id='level' color="borderInput" InputProps={{ classes: { input: classes.input } }} value={level}
-              onChange={(e) => maxAndMinInput(setLevel, e, 99, 1)} />
+              onChange={(e) => maxAndMinInputInt(setLevel, e, 99, 1)} />
           </Box>
         </Box>
         <Box
@@ -250,15 +263,15 @@ const GameConfigurationCreatePage = () => {
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            borderLeft: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
+            // borderLeft: "1px solid #E9EAED",
+            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Número de Níveis" margin="normal" type='number' name="Loops" id='Loops' color="borderInput" InputProps={{ classes: { input: classes.input } }} value={Loops}
-              onChange={(e) => maxAndMinInput(setLoops, e, 99, 1)} />
+            <TextField sx={{ width: '90%' }} required label="Número de Níveis (10 objetos por nível)" margin="normal" type='number' name="Loops" id='Loops' color="borderInput" InputProps={{ classes: { input: classes.input } }} value={Loops}
+              onChange={(e) => maxAndMinInputInt(setLoops, e, 99, 1)} />
           </Box>
         </Box>
         <Box
@@ -268,8 +281,8 @@ const GameConfigurationCreatePage = () => {
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            borderRight: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
+            // borderRight: "1px solid #E9EAED",
+            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -286,8 +299,8 @@ const GameConfigurationCreatePage = () => {
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            borderLeft: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
+            // borderLeft: "1px solid #E9EAED",
+            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -304,15 +317,15 @@ const GameConfigurationCreatePage = () => {
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            borderRight: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
+            // borderRight: "1px solid #E9EAED",
+            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
             <TextField sx={{ width: '90%' }} required label="Limiar de Sucesso em Alvos" margin="normal" type='number' name="heightUpThreshold" id='heightUpThreshold' color="borderInput" inputProps={{ step: "1" }} InputProps={{ classes: { input: classes.input } }} value={heightUpThreshold}
-              onChange={(e) => maxAndMinInput(setHeightUpThreshold, e, 6, 0)} />
+              onChange={(e) => maxAndMinInputInt(setHeightUpThreshold, e, 6, 0)} />
           </Box>
         </Box>
         <Box
@@ -322,15 +335,15 @@ const GameConfigurationCreatePage = () => {
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            borderLeft: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
+            // borderLeft: "1px solid #E9EAED",
+            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
             <TextField sx={{ width: '90%' }} required label="Limiar de Falhas em Alvos" margin="normal" type='number' name="heightDownThreshold" id='heightDownThreshold' color="borderInput" inputProps={{ step: "1" }} InputProps={{ classes: { input: classes.input } }} value={heightDownThreshold}
-              onChange={(e) => maxAndMinInput(setHeightDownThreshold, e, 3, 0)} />
+              onChange={(e) => maxAndMinInputInt(setHeightDownThreshold, e, 3, 0)} />
           </Box>
         </Box>
         <Box
@@ -340,8 +353,8 @@ const GameConfigurationCreatePage = () => {
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            borderRight: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
+            // borderRight: "1px solid #E9EAED",
+            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -358,15 +371,15 @@ const GameConfigurationCreatePage = () => {
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            borderLeft: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
+            // borderLeft: "1px solid #E9EAED",
+            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
             <TextField sx={{ width: '90%' }} required label="Limiar de Sucesso em Obstáculos" margin="normal" type='number' name="sizeUpThreshold" id='sizeUpThreshold' color="borderInput" inputProps={{ step: "1" }} InputProps={{ classes: { input: classes.input } }} value={sizeUpThreshold}
-              onChange={(e) => maxAndMinInput(setSizeUpThreshold, e, 6, 0)} />
+              onChange={(e) => maxAndMinInputInt(setSizeUpThreshold, e, 6, 0)} />
           </Box>
         </Box>
         <Box
@@ -376,15 +389,15 @@ const GameConfigurationCreatePage = () => {
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            borderRight: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
+            // borderRight: "1px solid #E9EAED",
+            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
         >
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
             <TextField sx={{ width: '90%' }} required label="Limar de Falhas em Obstáculos" margin="normal" type='number' name="sizeDownThreshold" id='sizeDownThreshold' color="borderInput" inputProps={{ step: "1" }} InputProps={{ classes: { input: classes.input } }} value={sizeDownThreshold}
-              onChange={(e) => maxAndMinInput(setSizeDownThreshold, e, 3, 0)} />
+              onChange={(e) => maxAndMinInputInt(setSizeDownThreshold, e, 3, 0)} />
           </Box>
         </Box>
         <Box
@@ -394,8 +407,8 @@ const GameConfigurationCreatePage = () => {
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            borderLeft: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
+            // borderLeft: "1px solid #E9EAED",
+            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -403,7 +416,7 @@ const GameConfigurationCreatePage = () => {
           <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
           </Box>
         </Box>
-        <Box
+        {/* <Box
           sx={{
             paddingLeft: 2,
             display: "flex",
@@ -416,11 +429,11 @@ const GameConfigurationCreatePage = () => {
             height: "100%",
           }}
         >
-          {/* <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
+          <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
             <TextField multiline rows={3} sx={{ width: '100%' }} required label="Roteiro do Jogo" margin="normal" name="gameScript" id='gameScript' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={gameScript}
               onChange={(e) => setGameScript(e.target.value)} />
-          </Box> */}
-        </Box>
+          </Box>
+        </Box> */}
         <Button
           type="submit"
           variant="contained"
