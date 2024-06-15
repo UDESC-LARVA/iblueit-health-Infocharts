@@ -21,19 +21,6 @@ const useStyles = makeStyles((theme) => ({
 const GameParameterCard = ({ gameParameter, index=null, selectNeighborInformation=null }) => {
   const classes = useStyles();
 
-  // const translateGameScript = (pacientGameParameter, index) => {
-  //   var stringifyGameScript = ""
-  //   pacientGameParameter?.forEach(function(attr, index) {
-  //     if(index + 1 === pacientGameParameter.length){
-  //       stringifyGameScript += (attr.ObjectType+";"+attr.DifficultyFactor+";"+attr.PositionYFactor+";"+attr.PositionXSpacing)
-  //     } else {
-  //       stringifyGameScript += (attr.ObjectType+";"+attr.DifficultyFactor+";"+attr.PositionYFactor+";"+attr.PositionXSpacing+"\r\n")
-  //     }
-
-  //   })
-  //   return stringifyGameScript
-  // }
-
   return (
     <Paper
       sx={{
@@ -51,23 +38,12 @@ const GameParameterCard = ({ gameParameter, index=null, selectNeighborInformatio
     >
       <GameParameterCardHeader title={gameParameter.isAVG ? 'Media das Avaliações' : gameParameter.pacientName} />
       <Box sx={{ display: 'flex', flexFlow: 'wrap' }}>
-        {/* <MeasureBox
-          isLeft={true}
-          title={`${gameParameter.isAVG ? "Média" : "Id do Paciente"}`}
-          value={`${gameParameter.isAVG ? "" : gameParameter.pacientId}`}
-        /> */}
         <MeasureBox
-          isLeft={false}
-          title='Fase do Exergame'
+          isLeft={true}
+          title='Fase'
           Idname = {`phase${index}`}
           value={`${gameParameter.phase ? gameParameter.phase.toFixed(0) : ''}`}
         />
-        {/* <MeasureBox
-          isLeft={true}
-          title='Nivel do Estágio'
-          Idname = {`stageId${index}`}
-          value={`${gameParameter.stageId ? gameParameter.stageId.toFixed(0) : ''}`}
-        /> */}
         <MeasureBox
           isLeft={false}
           title='Nível'
@@ -122,22 +98,14 @@ const GameParameterCard = ({ gameParameter, index=null, selectNeighborInformatio
           Idname = {`sizeDownThreshold${index}`}
           value={`${gameParameter.SizeDownThreshold ? gameParameter.SizeDownThreshold.toFixed(0) : ''}`}
         />
-        {/* <MeasureBox
-          isLeft={false}
-          widthBox='100%'
-          title='Roteiro do Jogo'
-          flexDirectionInnerBox = "column"
-          Idname = {`gameScript${index}`}
-          value={`${gameParameter.gameScript ? translateGameScript(gameParameter.gameScript, index) : ''}`}
-        /> */}
         <Button
           type="button"
-          fullWidth
-          sx={{ mt: 3, mb: 2 }}
+          variant="contained"
+          sx={{ mt: 3, mb: 2, mx: 'auto'}}
           className={classes.button}
           onClick={() => selectNeighborInformation(index)}
         >
-          Selecionar Configuração
+          Copiar Perfil
         </Button>
       </Box>
     </Paper>

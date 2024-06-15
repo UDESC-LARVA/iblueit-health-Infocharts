@@ -91,7 +91,7 @@ const GameConfigurationCreatePage = () => {
 
   const selectNeighborInformation = (index) => {
     setPhase(document.getElementById(`phase${index}`).innerText);
-    setStageId(document.getElementById(`stageId${index}`).innerText);
+    // setStageId(document.getElementById(`stageId${index}`).innerText);
     setLevel(document.getElementById(`level${index}`).innerText);
     setLoops(document.getElementById(`Loops${index}`).innerText);
     setObjectSpeedFactor(document.getElementById(`objectSpeedFactor${index}`).innerText);
@@ -204,13 +204,11 @@ const GameConfigurationCreatePage = () => {
       >
         <Box
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            // borderRight: "1px solid #E9EAED",
-            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -220,33 +218,13 @@ const GameConfigurationCreatePage = () => {
               onChange={(e) => maxAndMinInputInt(setPhase, e, 4, 1)} />
           </Box>
         </Box>
-        {/* <Box
-          sx={{
-            paddingLeft: 2,
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            border: "none",
-            borderLeft: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
-            width: '50%',
-            height: 100,
-          }}
-        >
-          <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField sx={{ width: '90%' }} required label="Nivel do Estágio" margin="normal" type='number' name="stageId" id='stageId' color="borderInput" InputProps={{ classes: { input: classes.input } }} value={stageId}
-              onChange={(e) => maxAndMinInput(setStageId, e, 4, 1)} />
-          </Box>
-        </Box> */}
         <Box
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            // borderRight: "1px solid #E9EAED",
-            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -258,13 +236,11 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            // borderLeft: "1px solid #E9EAED",
-            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -276,13 +252,11 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            // borderRight: "1px solid #E9EAED",
-            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -294,13 +268,11 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            // borderLeft: "1px solid #E9EAED",
-            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -312,13 +284,11 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            // borderRight: "1px solid #E9EAED",
-            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -330,13 +300,11 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            // borderLeft: "1px solid #E9EAED",
-            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -348,13 +316,11 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            // borderRight: "1px solid #E9EAED",
-            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -366,13 +332,11 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            // borderLeft: "1px solid #E9EAED",
-            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -384,13 +348,11 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             border: "none",
-            // borderRight: "1px solid #E9EAED",
-            // borderBottom: "1px solid #E9EAED",
             width: '50%',
             height: 100,
           }}
@@ -400,51 +362,17 @@ const GameConfigurationCreatePage = () => {
               onChange={(e) => maxAndMinInputInt(setSizeDownThreshold, e, 3, 0)} />
           </Box>
         </Box>
-        <Box
-          sx={{
-            paddingLeft: 2,
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            border: "none",
-            // borderLeft: "1px solid #E9EAED",
-            // borderBottom: "1px solid #E9EAED",
-            width: '50%',
-            height: 100,
-          }}
-        >
-          <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-          </Box>
-        </Box>
-        {/* <Box
-          sx={{
-            paddingLeft: 2,
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            border: "none",
-            borderRight: "1px solid #E9EAED",
-            borderBottom: "1px solid #E9EAED",
-            width: '100%',
-            height: "100%",
-          }}
-        >
-          <Box sx={{ width: '100%', display: "flex", flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextField multiline rows={3} sx={{ width: '100%' }} required label="Roteiro do Jogo" margin="normal" name="gameScript" id='gameScript' color="borderInput" inputProps={{ step: "0.5" }} InputProps={{ classes: { input: classes.input } }} value={gameScript}
-              onChange={(e) => setGameScript(e.target.value)} />
-          </Box>
-        </Box> */}
         <Button
           type="submit"
           variant="contained"
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ mt: 3, mb: 2, mx: 'auto'}}
           className={classes.button}
         >
-          Salvar Parâmetros
+          Salvar
         </Button>
       </Box>
       <Typography variant="h2" sx={{ mt: 4, fontSize: 20, fontWeight: "bold", letterSpacing: "1px" }}>
-        Recomendações criadas pela IA
+        Recomendações de Perfis de Pacientes
       </Typography>
       <Box
         sx={{
