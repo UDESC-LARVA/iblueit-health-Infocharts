@@ -36,7 +36,13 @@ const GameParameterCard = ({ gameParameter, index=null, selectNeighborInformatio
       }}
       elevation={24}
     >
-      <GameParameterCardHeader title={gameParameter.isAVG ? 'Media das Avaliações' : gameParameter.pacientName} />
+      <GameParameterCardHeader
+        isAVG={gameParameter.isAVG}
+        pacientName={gameParameter.pacientName}
+        condition={gameParameter.condition}
+        height={gameParameter.height}
+        weight={gameParameter.weight}
+      />
       <Box sx={{ display: 'flex', flexFlow: 'wrap' }}>
         <MeasureBox
           isLeft={true}

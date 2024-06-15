@@ -40,24 +40,21 @@ const GameConfigurationCreatePage = () => {
   const [sizeIncrement, setSizeIncrement] = useState('');
   const [sizeUpThreshold, setSizeUpThreshold] = useState('');
   const [sizeDownThreshold, setSizeDownThreshold] = useState('');
-  // const [gameScript, setGameScript] = useState('');
 
   useEffect(() => {
     const setInputsPacientGameParameter = (pacientGameParameter) => {
       if (pacientGameParameter) {
-        // var stringifyGameScript = translateGameScript(pacientGameParameter?.gameScript)
-        setPhase(pacientGameParameter?.phase || "");
-        setStageId(pacientGameParameter?.stageId || "");
-        setLevel(pacientGameParameter?.level || "");
-        setLoops(pacientGameParameter?.Loops || "");
-        setObjectSpeedFactor(pacientGameParameter?.ObjectSpeedFactor?.$numberDecimal || "");
-        setHeightIncrement(pacientGameParameter?.HeightIncrement?.$numberDecimal || "");
-        setHeightUpThreshold(pacientGameParameter?.HeightUpThreshold || "");
-        setHeightDownThreshold(pacientGameParameter?.HeightDownThreshold || "");
-        setSizeIncrement(pacientGameParameter?.SizeIncrement?.$numberDecimal || "");
-        setSizeUpThreshold(pacientGameParameter?.SizeUpThreshold || "");
-        setSizeDownThreshold(pacientGameParameter?.SizeDownThresholdl || "");
-        // setGameScript(stringifyGameScript || "");
+        setPhase(pacientGameParameter?.phase || 1);
+        setStageId(pacientGameParameter?.stageId || 1);
+        setLevel(pacientGameParameter?.level || 1);
+        setLoops(pacientGameParameter?.Loops || 6);
+        setObjectSpeedFactor(pacientGameParameter?.ObjectSpeedFactor?.$numberDecimal || 1.0);
+        setHeightIncrement(pacientGameParameter?.HeightIncrement?.$numberDecimal || 0.0);
+        setHeightUpThreshold(pacientGameParameter?.HeightUpThreshold || 0);
+        setHeightDownThreshold(pacientGameParameter?.HeightDownThreshold || 0);
+        setSizeIncrement(pacientGameParameter?.SizeIncrement?.$numberDecimal || 0.0);
+        setSizeUpThreshold(pacientGameParameter?.SizeUpThreshold || 0);
+        setSizeDownThreshold(pacientGameParameter?.SizeDownThreshold || 0);
       }
     }
     async function getGameParameterNeighbor() {
@@ -77,21 +74,9 @@ const GameConfigurationCreatePage = () => {
     return (<Typography variant="h2" sx={{ fontSize: 20 }}>Um paciente precisa ser selecionado!</Typography>);
   }
 
-  // const translateGameScript = (pacientGameParameter) => {
-  //   var stringifyGameScript = ""
-  //   pacientGameParameter?.forEach(function (attr, index) {
-  //     if (index + 1 === pacientGameParameter.length) {
-  //       stringifyGameScript += (attr.ObjectType + ";" + attr.DifficultyFactor + ";" + attr.PositionYFactor + ";" + attr.PositionXSpacing)
-  //     } else {
-  //       stringifyGameScript += (attr.ObjectType + ";" + attr.DifficultyFactor + ";" + attr.PositionYFactor + ";" + attr.PositionXSpacing + "\r\n")
-  //     }
-  //   })
-  //   return stringifyGameScript
-  // }
 
   const selectNeighborInformation = (index) => {
     setPhase(document.getElementById(`phase${index}`).innerText);
-    // setStageId(document.getElementById(`stageId${index}`).innerText);
     setLevel(document.getElementById(`level${index}`).innerText);
     setLoops(document.getElementById(`Loops${index}`).innerText);
     setObjectSpeedFactor(document.getElementById(`objectSpeedFactor${index}`).innerText);
@@ -101,24 +86,15 @@ const GameConfigurationCreatePage = () => {
     setSizeIncrement(document.getElementById(`sizeIncrement${index}`).innerText);
     setSizeUpThreshold(document.getElementById(`sizeUpThreshold${index}`).innerText);
     setSizeDownThreshold(document.getElementById(`sizeDownThreshold${index}`).innerText);
-    // setGameScript(document.getElementById(`gameScript${index}`)?.innerText?.replace(" ", "\n"));
-    context.addNotification('success',  'Configurações selecionadas');
+    context.addNotification('success',  'Parâmetros selecionados');
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!context.patientId) {
-      context.addNotification('error', 'Nenhum paciente selecionados')
+      context.addNotification('error', 'Nenhum paciente selecionado')
     } else {
       try {
-        // const gameScriptEdit = document?.getElementById('gameScript')?.value?.split("\n")?.map(function (template) {
-        //   return {
-        //     "ObjectType": template.split(";")[0],
-        //     "DifficultyFactor": template.split(";")[1],
-        //     "PositionYFactor": template.split(";")[2],
-        //     "PositionXSpacing": template.split(";")[3]
-        //   }
-        // })
         const gameParameter = {
           pacientId: context.patientId,
           "stageId": stageId,
@@ -131,7 +107,6 @@ const GameConfigurationCreatePage = () => {
           "SizeIncrement": sizeIncrement,
           "SizeUpThreshold": sizeUpThreshold,
           "SizeDownThreshold": sizeDownThreshold,
-          // "gameScript": gameScriptEdit,
           "Loops": Loops,
         };
         await createGameParameter(context, gameParameter)
@@ -204,7 +179,7 @@ const GameConfigurationCreatePage = () => {
       >
         <Box
           sx={{
-            paddingLeft: 3,
+            paddingLeft: 4,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
@@ -220,7 +195,7 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 3,
+            paddingLeft: 4,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
@@ -236,7 +211,7 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 3,
+            paddingLeft: 4,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
@@ -252,7 +227,7 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 3,
+            paddingLeft: 4,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
@@ -268,7 +243,7 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 3,
+            paddingLeft: 4,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
@@ -284,7 +259,7 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 3,
+            paddingLeft: 4,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
@@ -300,7 +275,7 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 3,
+            paddingLeft: 4,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
@@ -316,7 +291,7 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 3,
+            paddingLeft: 4,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
@@ -332,7 +307,7 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 3,
+            paddingLeft: 4,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
@@ -348,7 +323,7 @@ const GameConfigurationCreatePage = () => {
         </Box>
         <Box
           sx={{
-            paddingLeft: 3,
+            paddingLeft: 4,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
@@ -365,7 +340,7 @@ const GameConfigurationCreatePage = () => {
         <Button
           type="submit"
           variant="contained"
-          sx={{ mt: 3, mb: 2, mx: 'auto'}}
+          sx={{ mt: 2, mb: 2, mx: 'auto'}}
           className={classes.button}
         >
           Salvar
