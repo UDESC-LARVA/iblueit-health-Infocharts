@@ -42,61 +42,61 @@ const GameParameterCard = ({ gameParameter, index=null, selectNeighborInformatio
           isLeft={true}
           title='Fase'
           Idname = {`phase${index}`}
-          value={`${gameParameter.phase ? gameParameter.phase.toFixed(0) : ''}`}
+          value={`${gameParameter.phase ? gameParameter.phase.toFixed(0) : 1}`}
         />
         <MeasureBox
           isLeft={false}
           title='Nível'
           Idname = {`level${index}`}
-          value={`${gameParameter.level ? gameParameter.level.toFixed(0) : ''}`}
+          value={`${gameParameter.level ? gameParameter.level.toFixed(0) : 1}`}
         />
         <MeasureBox
           isLeft={true}
           title='Número de Níveis'
           Idname = {`Loops${index}`}
-          value={`${gameParameter.Loops ? gameParameter.Loops.toFixed(0) : ''}`}
+          value={`${gameParameter.Loops ? gameParameter.Loops.toFixed(0) : 6}`}
         />
         <MeasureBox
           isLeft={false}
           title='Velocidade'
           Idname = {`objectSpeedFactor${index}`}
-          value={`${gameParameter.ObjectSpeedFactor ? gameParameter.ObjectSpeedFactor.toFixed(2) : ''}`}
+          value={`${gameParameter.ObjectSpeedFactor ? gameParameter.ObjectSpeedFactor.toFixed(2) : 1.0}`}
         />
         <MeasureBox
           isLeft={true}
           title='Degrau de Ajuste de Alvos'
           Idname = {`heightIncrement${index}`}
-          value={`${gameParameter.HeightIncrement ? gameParameter.HeightIncrement.toFixed(2) : ''}`}
+          value={`${gameParameter.HeightIncrement ? gameParameter.HeightIncrement.toFixed(2) : 0.0}`}
         />
         <MeasureBox
           isLeft={false}
           title='Limiar de Sucesso em Alvos'
           Idname = {`heightUpThreshold${index}`}
-          value={`${gameParameter.HeightUpThreshold ? gameParameter.HeightUpThreshold.toFixed(0) : ''}`}
+          value={`${gameParameter.HeightUpThreshold ? gameParameter.HeightUpThreshold.toFixed(0) : 6}`}
         />
         <MeasureBox
           isLeft={true}
           title='Limiar de Falhas em Alvos'
           Idname = {`heightDownThreshold${index}`}
-          value={`${gameParameter.HeightDownThreshold ? gameParameter.HeightDownThreshold.toFixed(0) : ''}`}
+          value={`${gameParameter.HeightDownThreshold ? gameParameter.HeightDownThreshold.toFixed(0) : 3}`}
         />
         <MeasureBox
           isLeft={false}
           title='Degrau de Ajuste de Obstáculo'
           Idname = {`sizeIncrement${index}`}
-          value={`${gameParameter.SizeIncrement ? gameParameter.SizeIncrement.toFixed(2) : ''}`}
+          value={`${gameParameter.SizeIncrement ? gameParameter.SizeIncrement.toFixed(2) : 0.0}`}
         />
         <MeasureBox
           isLeft={true}
           title='Limiar de Sucesso em Obstáculos'
           Idname = {`sizeUpThreshold${index}`}
-          value={`${gameParameter.SizeUpThreshold ? gameParameter.SizeUpThreshold.toFixed(0) : ''}`}
+          value={`${gameParameter.SizeUpThreshold ? gameParameter.SizeUpThreshold.toFixed(0) : 6}`}
         />
         <MeasureBox
           isLeft={false}
           title='Limar de Falhas em Obstáculos'
           Idname = {`sizeDownThreshold${index}`}
-          value={`${gameParameter.SizeDownThreshold ? gameParameter.SizeDownThreshold.toFixed(0) : ''}`}
+          value={`${gameParameter.SizeDownThreshold ? gameParameter.SizeDownThreshold.toFixed(0) : 3}`}
         />
         <Button
           type="button"
