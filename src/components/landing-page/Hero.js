@@ -41,7 +41,7 @@ export default function Hero() {
               fontSize: 'clamp(2.5rem, 10vw, 3rem)',
             }}
           >
-            I Blue It&nbsp;
+            I Blue It 5.0&nbsp;
             <Typography
               component="span"
               variant="h1"
@@ -59,15 +59,16 @@ export default function Hero() {
             color="text.secondary"
             sx={{ alignSelf: 'center', width: { sm: '100%', md: '100%' } }}
           >
-            O conceito de Flow Psicofisiológico introduz o metodologia do equilíbrio tridimensional 
-            entre os eixos de desempenho psíquico, desempenho terapêutico e dificuldade aplicada em Reabilitação.
+            O conceito de Flow Psicofisiológico introduz a metodologia do equilíbrio tridimensional 
+            entre os eixos de desempenho psíquico, desempenho terapêutico e dificuldade. 
+            O Flow Psicofisiológico foi concebido para área da Reabilitação física.
             Beneficia-se de tecnologias multimodais, multisinais e de inteligência artificial.
           </Typography>
 
           <Typography variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
-            Tese apresentada ao Programa de Pós-Graduação em Engenharia Elétrica &nbsp;
+            Tese apresentada ao Programa de Pós-Graduação em Engenharia Elétrica, &nbsp;
             <Link href="#" color="primary">
-              UDESC - PPGEEL
+               PPGEEL - UDESC
             </Link>
             .
           </Typography>
@@ -77,7 +78,7 @@ export default function Hero() {
           sx={(theme) => ({
             mt: { xs: 2, sm: 4 },
             pt: { xs: 2, sm: 4 },
-            mb: { xs: 32, sm: -20 },
+            mb: { xs: 44, sm: -20 },
             alignSelf: 'center',
             height: { xs: 320, sm: 640 },
             width: '100%',
@@ -114,12 +115,12 @@ export default function Hero() {
             <Typography
               textAlign="left"
               sx={{ alignSelf: 'left', 
-                width: { sm: '100%', md: '60%' },
+                width: { sm: '100%', md: '58%' },
                 color: (theme) =>
                   theme.palette.mode === 'light' ? 'text.black' : 'primary.light',
-                pt: { xs: 22, sm: 6 },
+                pt: { xs: 24, sm: 6 },
                 pb: { xs: 6, sm: 6 },
-                fontSize: 'clamp(1rem, 2vw, 1.2rem)'
+                fontSize: 'clamp(0.8rem, 5vw, 1rem)'
               }}
             >
               O Serious Exergame de reabilitação respiratória I Blue It Multimodal foi projetado para auxiliar
@@ -128,7 +129,7 @@ export default function Hero() {
               navegando por diferentes níveis e fases do jogo ao longo de sua jornada de reabilitação, 
               manipulando seus movimentos por meio de técnicas específicas de respiração: 
               ao exalar, o Blue submerge; ao inalar, o Blue salta. 
-              Os jogadores percorrem diferentes o jogo, coletando alvos e evitando obstáculos. 
+              Os jogadores percorrem diferentes desafios no jogo, coletando alvos e evitando obstáculos. 
               Essa mecânica promove a prática de controle respiratório de maneira divertida e envolvente, 
               incorporando elementos de jogabilidade que estimulam a atenção e a coordenação.
             </Typography>

@@ -65,7 +65,7 @@ export default function Features() {
               color="text.secondary"
               sx={{ mb: { xs: 2, sm: 4 } }}
             >
-              O I Blue It representa um sistema biomédico com um ecossistema de recursos de 
+              O I Blue It representa um sistema biomédico com um ecossistema formado por recursos de 
               hardware e software de maturidade e abrangência aplicável em ambientes clínicos.
             </Typography>
           </div>
@@ -106,14 +106,17 @@ export default function Features() {
           >
             <Box
               sx={{
+                mt: { xs: 1, sm: 4 },
+                mb: { xs: 2, sm: 4 },
                 backgroundImage: (theme) =>
                   theme.palette.mode === 'light'
                     ? items[selectedItemIndex].imageLight
                     : items[selectedItemIndex].imageDark,
-                backgroundSize: 'cover',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-                minWidth: 320,
-                minHeight: 380,
+                minWidth: 300,
+                minHeight: 340,
                 
               }}
             />
