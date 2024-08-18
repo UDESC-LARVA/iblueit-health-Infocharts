@@ -78,7 +78,7 @@ export default function Hero() {
           sx={(theme) => ({
             mt: { xs: 2, sm: 4 },
             pt: { xs: 2, sm: 4 },
-            mb: { xs: 44, sm: -20 },
+            mb: { xs: 50, sm: -20 },
             alignSelf: 'center',
             height: { xs: 320, sm: 640 },
             width: '100%',
