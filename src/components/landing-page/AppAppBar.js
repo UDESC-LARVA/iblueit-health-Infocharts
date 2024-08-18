@@ -13,6 +13,7 @@ import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
 import logoblue from '../../images/logoblue.png';
+import { pathRoutes } from '../../providers/Routes.jsx';
 
 const logoStyle = {
   width: '90px',
@@ -153,7 +154,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 variant="text"
                 size="small"
                 component="a"
-                href="login"
+                href={pathRoutes.LOGIN}
                 target="_blank"
                 sx={{ fontSize: '1.2rem' }}
               >
@@ -164,7 +165,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 variant="contained"
                 size="small"
                 component="a"
-                href="signUp"
+                href={pathRoutes.SIGN_UP}
                 target="_blank"
                 sx={{ fontSize: '1.2rem' }}
               >
@@ -219,7 +220,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                       color="primary"
                       variant="contained"
                       component="a"
-                      href="/material-ui/getting-started/templates/sign-up/"
+                      href="/sign-up/"
                       target="_blank"
                       sx={{ width: '100%' }}
                     >
@@ -231,7 +232,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                       color="primary"
                       variant="outlined"
                       component="a"
-                      href="/material-ui/getting-started/templates/sign-in/"
+                      href="/login/"
                       target="_blank"
                       sx={{ width: '100%' }}
                     >
