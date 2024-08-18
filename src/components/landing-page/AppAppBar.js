@@ -14,6 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
 import logoblue from '../../images/logoblue.png';
 import { pathRoutes } from '../../providers/Routes.jsx';
+import { Link as RouterLink } from 'react-router-dom';
 
 const logoStyle = {
   width: '90px',
@@ -153,8 +154,8 @@ function AppAppBar({ mode, toggleColorMode }) {
                 color="primary"
                 variant="text"
                 size="small"
-                component="a"
-                href={pathRoutes.LOGIN}
+                component={RouterLink}
+                to={pathRoutes.LOGIN}
                 target="_blank"
                 sx={{ fontSize: '1.2rem' }}
               >
@@ -164,8 +165,8 @@ function AppAppBar({ mode, toggleColorMode }) {
                 color="primary"
                 variant="contained"
                 size="small"
-                component="a"
-                href={pathRoutes.SIGN_UP}
+                component={RouterLink}
+                to={pathRoutes.SIGN_UP}
                 target="_blank"
                 sx={{ fontSize: '1.2rem' }}
               >
