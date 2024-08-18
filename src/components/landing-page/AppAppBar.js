@@ -156,7 +156,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 size="small"
                 component={RouterLink}
                 to={pathRoutes.LOGIN}
-                target="_blank"
+                
                 sx={{ fontSize: '1.2rem' }}
               >
                 Sign in
@@ -167,7 +167,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 size="small"
                 component={RouterLink}
                 to={pathRoutes.SIGN_UP}
-                target="_blank"
+                
                 sx={{ fontSize: '1.2rem' }}
               >
                 Sign up
