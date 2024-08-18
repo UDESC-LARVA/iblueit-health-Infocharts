@@ -30,7 +30,7 @@ export default function Hero() {
           pb: { xs: 8, sm: 12 },
         }}
       >
-        <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '70%' } }}>
+        <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '90%' } }}>
           <Typography
             variant="h1"
             sx={{
@@ -38,7 +38,7 @@ export default function Hero() {
               flexDirection: { xs: 'column', md: 'row' },
               alignSelf: 'center',
               textAlign: 'center',
-              fontSize: 'clamp(3.5rem, 10vw, 4rem)',
+              fontSize: 'clamp(2.5rem, 10vw, 3rem)',
             }}
           >
             I Blue It&nbsp;
@@ -46,7 +46,7 @@ export default function Hero() {
               component="span"
               variant="h1"
               sx={{
-                fontSize: 'clamp(3rem, 10vw, 4rem)',
+                fontSize: 'clamp(2.5rem, 10vw, 3rem)',
                 color: (theme) =>
                   theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
               }}
@@ -57,7 +57,7 @@ export default function Hero() {
           <Typography
             textAlign="center"
             color="text.secondary"
-            sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
+            sx={{ alignSelf: 'center', width: { sm: '100%', md: '100%' } }}
           >
             O conceito de Flow Psicofisiológico introduz o metodologia do equilíbrio tridimensional 
             entre os eixos de desempenho psíquico, desempenho terapêutico e dificuldade aplicada em Reabilitação.
