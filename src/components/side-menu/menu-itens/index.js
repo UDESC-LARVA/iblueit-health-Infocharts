@@ -152,7 +152,8 @@ const MenuItens = ({ permission, patientList }) => {
               title="Sessão"
               icon={<SportsEsportsIcon sx={{ fontSize: 17 }} />}
               submenus={[
-                { title: "Definir", path: pathRoutes.GAME_CONFIGURATION_CREATE, icon: <AddIcon sx={{ fontSize: 17 }} /> },
+                { title: "Definir", path: pathRoutes.GAME_CONFIGURATION_DEFINE, icon: <AddIcon sx={{ fontSize: 17 }} /> },
+                { title: "Recomendar", path: pathRoutes.GAME_CONFIGURATION_CREATE, icon: <AddIcon sx={{ fontSize: 17 }} /> },
               ]}
             />
             <MenuItemTemplate

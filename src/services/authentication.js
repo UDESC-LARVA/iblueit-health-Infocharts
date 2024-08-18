@@ -12,8 +12,9 @@ const postAuthentication = async (context, username, password) => {
     const result = await axios.post(`${BaseUrl()}/login`, { username, password });
     saveAuthenticationData(result)
   } catch (error) {
-    context.addNotification('error', extractMessage(error, 'Usuário ou senha incorretos'));
-    throw 'erro';
+    const errorMessage = extractMessage(error, 'Usuário ou senha incorretos');
+    context.addNotification('error', errorMessage);
+    throw new Error(errorMessage);
   } finally {
     context.setLoading(false);
   }

@@ -75,7 +75,8 @@ const LoginPage = () => {
         </Box>
 
         <Typography color='#11192A' component="h1" variant="h5" >
-          Bem-vindo ao I BLUE IT Analytics!
+          Bem-vindo ao <br />
+          <strong>I BLUE IT: Health InfoCharts</strong>
         </Typography>
 
         <Box

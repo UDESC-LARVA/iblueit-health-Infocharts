@@ -45,7 +45,7 @@ const getGameParameter = async (pacientId) => {
   }
 };
 
-const createGameParameter = async (context, gameParameter) => {
+const createGameParameter = async (pacientId, context, gameParameter) => {
   context.setLoading(true);
   const gameToken = getTokenParameters('gameToken');
   try {
@@ -54,6 +54,9 @@ const createGameParameter = async (context, gameParameter) => {
         gameToken,
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': "*"
+      },
+      params: {
+        pacientId: pacientId
       }
     });
     return result;

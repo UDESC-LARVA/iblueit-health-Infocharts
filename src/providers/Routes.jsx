@@ -1,5 +1,6 @@
 import React from 'react';
 
+import HomePage from "../pages/home";
 import LoginPage from "../pages/login";
 import SignUp from "../pages/signUp";
 import Layout from "../pages/layout";
@@ -14,10 +15,12 @@ import InformationPanel from "../pages/informationPanel";
 import MiniGamesResults from "../pages/miniGames/results";
 import MiniGamesComparative from "../pages/miniGames/comparative";
 import GameConfigurationCreatePage from "../pages/gameConfigurationCreate";
+import GameConfigurationPage from "../pages/gameConfigurationDefine";
 
 
 export const pathRoutes = {
-	LOGIN: '/',
+	HOME: '/',
+	LOGIN: '/login',
 	SIGN_UP: '/signUp',
 	LAYOUT: '/layout',
 	INFORMATION_PANEL: '/dashboard/informationPanel',
@@ -30,9 +33,15 @@ export const pathRoutes = {
 	MINI_GAMES_RESULTS: '/miniGames/results',
 	MINI_GAMES_COMPARATIVE: '/miniGames/comparative',
 	GAME_CONFIGURATION_CREATE:'/gameConfiguration/create',
+	GAME_CONFIGURATION_DEFINE:'/gameConfiguration/define',
 }
 
 const routes = [{
+	path: pathRoutes.HOME,
+	title: 'Flow Psicofisiológico',
+	component: () => (<HomePage />),
+	privated: false,
+},{
 	path: pathRoutes.LOGIN,
 	title: 'Entrar',
 	component: () => (<LoginPage />),
@@ -93,11 +102,16 @@ const routes = [{
 	component: () => (<MiniGamesComparative />),
 	privated: true,
 },{
-	path: pathRoutes.GAME_CONFIGURATION_CREATE,
+	path: pathRoutes.GAME_CONFIGURATION_DEFINE,
 	title: 'Definir parâmetros do Exergame',
+	component: () => (<GameConfigurationPage />),
+	privated: true,
+},{
+	path: pathRoutes.GAME_CONFIGURATION_CREATE,
+	title: 'Recomendar parâmetros do Exergame',
 	component: () => (<GameConfigurationCreatePage />),
 	privated: true,
-}, {
+},{
 	path: '*',
 	title: 'Pagina não encontrada',
 	component: () => (<PageNotFound />),

@@ -47,7 +47,7 @@ const GameConfigurationCreatePage = () => {
         setPhase(pacientGameParameter?.phase || 1);
         setStageId(pacientGameParameter?.stageId || 1);
         setLevel(pacientGameParameter?.level || 1);
-        setLoops(pacientGameParameter?.Loops || 6);
+        setLoops(pacientGameParameter?.Loops || 1);
         setObjectSpeedFactor(pacientGameParameter?.ObjectSpeedFactor?.$numberDecimal || 1.0);
         setHeightIncrement(pacientGameParameter?.HeightIncrement?.$numberDecimal || 0.0);
         setHeightUpThreshold(pacientGameParameter?.HeightUpThreshold || 0);
