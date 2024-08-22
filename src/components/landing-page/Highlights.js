@@ -47,7 +47,7 @@ const items = [
     icon: <QueryStatsRoundedIcon />,
     title: 'Versão 5.0: I Blue It Flow Psicofisiológico (2024)',
     description:
-      'Concepção do Conceito Flow Psicofisiológico. Inteligência Artificial..',
+      'Concepção do Conceito Flow Psicofisiológico. Inteligência Artificial.',
   },
 ];
 

@@ -219,7 +219,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                       color="primary"
                       variant="contained"
                       component={RouterLink}
-                      to={pathRoutes.LOGIN}
+                      to={pathRoutes.SIGN_UP}
                       sx={{ width: '100%' }}
                     >
                       Sign up

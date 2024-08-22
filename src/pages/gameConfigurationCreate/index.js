@@ -97,7 +97,7 @@ const GameConfigurationCreatePage = () => {
       try {
         const gameParameter = {
           pacientId: context.patientId,
-          "stageId": stageId,
+          "stageId": 1,
           "phase": phase,
           "level": level,
           "ObjectSpeedFactor": objectSpeedFactor,
