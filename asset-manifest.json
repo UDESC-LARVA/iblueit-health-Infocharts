@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/iblueit-health-Infocharts/static/css/main.d57cf5d4.css",
-    "main.js": "/iblueit-health-Infocharts/static/js/main.9f3da696.js",
+    "main.js": "/iblueit-health-Infocharts/static/js/main.12b6c6da.js",
     "static/js/787.2586bbcd.chunk.js": "/iblueit-health-Infocharts/static/js/787.2586bbcd.chunk.js",
     "static/media/flow.png": "/iblueit-health-Infocharts/static/media/flow.e1d6ddf7dd86e8b83aee.png",
     "static/media/background.png": "/iblueit-health-Infocharts/static/media/background.19e0eba8ffcd181b30d1.png",
@@ -43,11 +43,11 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/iblueit-health-Infocharts/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/iblueit-health-Infocharts/index.html",
     "main.d57cf5d4.css.map": "/iblueit-health-Infocharts/static/css/main.d57cf5d4.css.map",
-    "main.9f3da696.js.map": "/iblueit-health-Infocharts/static/js/main.9f3da696.js.map",
+    "main.12b6c6da.js.map": "/iblueit-health-Infocharts/static/js/main.12b6c6da.js.map",
     "787.2586bbcd.chunk.js.map": "/iblueit-health-Infocharts/static/js/787.2586bbcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d57cf5d4.css",
-    "static/js/main.9f3da696.js"
+    "static/js/main.12b6c6da.js"
   ]
 }
