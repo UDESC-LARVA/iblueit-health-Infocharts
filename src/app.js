@@ -52,7 +52,7 @@ const App = () => {
       <Notification />
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <AssemblyOfRoutes />
         </BrowserRouter>
       </ThemeProvider>
