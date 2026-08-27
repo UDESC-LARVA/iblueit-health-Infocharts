@@ -399,24 +399,24 @@ const ClinicalReport = () => {
                   <Table size="small">
                     <TableHead>
                       <TableRow>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 13 }}>Métrica</TableCell>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 13 }}>Sigla</TableCell>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 13 }}>Valor</TableCell>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 13 }}>Unidade</TableCell>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 13 }}>Collection (MongoDB)</TableCell>
+                        <TableCell sx={{ fontWeight: "bold", fontSize: 13, color: "#11192A" }}>Métrica</TableCell>
+                        <TableCell sx={{ fontWeight: "bold", fontSize: 13, color: "#11192A" }}>Sigla</TableCell>
+                        <TableCell sx={{ fontWeight: "bold", fontSize: 13, color: "#11192A" }}>Valor</TableCell>
+                        <TableCell sx={{ fontWeight: "bold", fontSize: 13, color: "#11192A" }}>Unidade</TableCell>
+                        <TableCell sx={{ fontWeight: "bold", fontSize: 13, color: "#11192A" }}>Collection (MongoDB)</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {currentReport.dadosBrutos.map((row, i) => (
                         <TableRow key={i} sx={{ "&:nth-of-type(even)": { backgroundColor: "#f9f9f9" } }}>
-                          <TableCell sx={{ fontSize: 13 }}>{row.metrica}</TableCell>
-                          <TableCell sx={{ fontSize: 13 }}>{row.sigla}</TableCell>
-                          <TableCell sx={{ fontSize: 13 }}>
+                          <TableCell sx={{ fontSize: 13, color: "#11192A" }}>{row.metrica}</TableCell>
+                          <TableCell sx={{ fontSize: 13, color: "#11192A" }}>{row.sigla}</TableCell>
+                          <TableCell sx={{ fontSize: 13, color: "#11192A" }}>
                             {typeof row.valor === "number" ? row.valor.toFixed(2) : row.valor}
                           </TableCell>
                           <TableCell sx={{ fontSize: 13, color: "#9e9e9e" }}>{row.unidade}</TableCell>
-                          <TableCell sx={{ fontSize: 13 }}>
-                            <Chip size="small" label={row.collection} sx={{ backgroundColor: "#e8eaf6", color: "#3949ab", fontSize: 11 }} />
+                          <TableCell sx={{ fontSize: 13, color: "#11192A" }}>
+                            <Chip size="small" label={row.sourceCollection} sx={{ backgroundColor: "#e8eaf6", color: "#3949ab", fontSize: 11 }} />
                           </TableCell>
                         </TableRow>
                       ))}
@@ -459,17 +459,17 @@ const ClinicalReport = () => {
                   <Table>
                     <TableHead>
                       <TableRow sx={{ backgroundColor: "#f5f7ff" }}>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 13 }}>Período</TableCell>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 13 }}>Resumo</TableCell>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 13 }}>Alerta</TableCell>
+                        <TableCell sx={{ fontWeight: "bold", fontSize: 13, color: "#11192A" }}>Período</TableCell>
+                        <TableCell sx={{ fontWeight: "bold", fontSize: 13, color: "#11192A" }}>Resumo</TableCell>
+                        <TableCell sx={{ fontWeight: "bold", fontSize: 13, color: "#11192A" }}>Alerta</TableCell>
                         <TableCell />
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {reports.map((r, i) => (
                         <TableRow key={r._id} hover>
-                          <TableCell sx={{ fontSize: 13 }}>{r.period.label}</TableCell>
-                          <TableCell sx={{ fontSize: 13, maxWidth: 420 }}>
+                          <TableCell sx={{ fontSize: 13, color: "#11192A" }}>{r.period.label}</TableCell>
+                          <TableCell sx={{ fontSize: 13, maxWidth: 420, color: "#11192A" }}>
                             {(r.resumoSessao || "").slice(0, 110)}
                             {(r.resumoSessao || "").length > 110 ? "…" : ""}
                           </TableCell>
