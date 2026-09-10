@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Tabs from "@mui/material/Tabs";
@@ -30,8 +30,6 @@ import HistoryIcon from "@mui/icons-material/History";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import {
   LineChart,
   Line,
@@ -52,8 +50,6 @@ import {
   fetchPacientProfile,
   buildPeriodFromPreset,
   PERIOD_PRESETS,
-  parseLogFile,
-  importSessions,
 } from "../../services/api/clinicalReport";
 
 // ─── Estilos reutilizáveis ────────────────────────────────────────────────────
@@ -105,13 +101,6 @@ const ClinicalReport = () => {
   const [customEnd, setCustomEnd] = useState("");
   const [generating, setGenerating] = useState(false);
   const [generateError, setGenerateError] = useState(null);
-
-  // Upload de log — caminho alternativo/opcional (Tela 5)
-  const [uploadState, setUploadState] = useState("idle"); // idle | processing | done
-  const [fileName, setFileName] = useState("");
-  const [uploadSummary, setUploadSummary] = useState(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const fileRef = useRef(null);
 
   // Aba "Alertas" — RF10 ainda não persiste no backend, é só o formulário local
   const [criteria, setCriteria] = useState([
@@ -191,35 +180,6 @@ const ClinicalReport = () => {
       setGenerateError(message);
     } finally {
       setGenerating(false);
-    }
-  };
-
-  // ── Upload de log (opcional) ───────────────────────────────────────────────
-
-  const handleFile = async (file) => {
-    if (!file) return;
-    const ext = file.name.slice(file.name.lastIndexOf(".")).toLowerCase();
-    if (![".json", ".csv"].includes(ext)) {
-      context.addNotification("error", "Formato inválido. Selecione um arquivo .json ou .csv.");
-      return;
-    }
-
-    setFileName(file.name);
-    setUploadState("processing");
-    setUploadSummary(null);
-
-    try {
-      const rawSessions = await parseLogFile(file);
-      const summary = await importSessions(context.patientId, device, rawSessions);
-      setUploadSummary(summary);
-      setUploadState("done");
-      if (summary.success > 0) {
-        context.addNotification("success", `${summary.success} sessão(ões) importada(s) com sucesso.`);
-        await loadCharts();
-      }
-    } catch (err) {
-      context.addNotification("error", err.message || "Não foi possível processar o arquivo.");
-      setUploadState("idle");
     }
   };
 
@@ -644,9 +604,8 @@ const ClinicalReport = () => {
                 Gerar novo relatório clínico
               </Typography>
               <Typography sx={{ fontSize: 13, color: "#758BB7", mb: 3 }}>
-                Os dados normalmente já estão no MongoDB (o jogo envia em tempo real). O upload
-                abaixo é um caminho alternativo/opcional — use apenas se tiver um log de sessão
-                que não chegou a ser enviado pelo jogo (ex: sessão offline).
+                O sistema consulta automaticamente as collections do MongoDB para o período e
+                dispositivo selecionados — nenhum arquivo precisa ser enviado.
               </Typography>
 
               <Paper sx={BLOCK}>
@@ -679,72 +638,6 @@ const ClinicalReport = () => {
                     </>
                   )}
                 </Box>
-
-                {/* Upload opcional */}
-                {uploadState === "idle" && (
-                  <Box
-                    onDrop={(e) => { e.preventDefault(); setIsDragging(false); handleFile(e.dataTransfer.files[0]); }}
-                    onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
-                    onDragLeave={() => setIsDragging(false)}
-                    onClick={() => fileRef.current && fileRef.current.click()}
-                    sx={{
-                      border: "2px dashed " + (isDragging ? "#1e2b48" : "#b0bec5"),
-                      borderRadius: 3,
-                      backgroundColor: isDragging ? "#e8eaf6" : "#fafafa",
-                      cursor: "pointer",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      p: 4,
-                      mb: 2,
-                      "&:hover": { borderColor: "#1e2b48", backgroundColor: "#f0f4ff" },
-                    }}
-                  >
-                    <CloudUploadIcon sx={{ fontSize: 40, color: "#1e2b48", opacity: 0.45, mb: 1 }} />
-                    <Typography sx={{ color: "#5A5C69", fontWeight: "bold", fontSize: 14 }}>
-                      Selecione ou arraste um arquivo de log (opcional)
-                    </Typography>
-                    <Typography sx={{ color: "#9e9e9e", fontSize: 12, mt: 0.5 }}>
-                      .json ou .csv exportado pelo I Blue It
-                    </Typography>
-                    <input ref={fileRef} type="file" accept=".json,.csv" hidden onChange={(e) => handleFile(e.target.files[0])} />
-                  </Box>
-                )}
-
-                {uploadState === "processing" && (
-                  <Box sx={{ mb: 2 }}>
-                    <Typography sx={{ fontSize: 13, color: "#5A5C69", mb: 1 }}>Processando {fileName}...</Typography>
-                    <LinearProgress sx={{ "& .MuiLinearProgress-bar": { backgroundColor: "#1e2b48" } }} />
-                  </Box>
-                )}
-
-                {uploadState === "done" && uploadSummary && (
-                  <Paper sx={{
-                    backgroundColor: uploadSummary.failed.length ? "#fff3e0" : "#e8f5e9",
-                    border: "1px solid " + (uploadSummary.failed.length ? "#e65100" : "#a5d6a7"),
-                    borderRadius: 2, p: 2, mb: 2,
-                  }}>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: uploadSummary.failed.length ? 1 : 0 }}>
-                      <CheckCircleIcon sx={{ color: "#388e3c", mr: 1, fontSize: 20 }} />
-                      <Typography sx={{ fontSize: 13, color: "#2e7d32" }}>
-                        {uploadSummary.success} sessão(ões) de "{fileName}" importada(s) com sucesso.
-                      </Typography>
-                    </Box>
-                    {uploadSummary.failed.map((f, i) => (
-                      <Typography key={i} sx={{ fontSize: 12, color: "#bf360c" }}>
-                        Sessão {f.index + 1}: {f.message}
-                      </Typography>
-                    ))}
-                    <Button
-                      size="small"
-                      sx={{ mt: 1, color: "#1e2b48", textTransform: "none" }}
-                      onClick={() => { setUploadState("idle"); setUploadSummary(null); setFileName(""); }}
-                    >
-                      Enviar outro arquivo
-                    </Button>
-                  </Paper>
-                )}
 
                 <Typography sx={{ fontSize: 12, color: "#9e9e9e", mb: 2 }}>
                   Collections consultadas automaticamente: plataformoverviews, gameparameters,
