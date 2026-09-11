@@ -50,6 +50,8 @@ import {
   fetchPacientProfile,
   buildPeriodFromPreset,
   PERIOD_PRESETS,
+  fetchAlertCriteria,
+  saveAlertCriteria,
 } from "../../services/api/clinicalReport";
 
 // ─── Estilos reutilizáveis ────────────────────────────────────────────────────
@@ -71,8 +73,22 @@ const BLOCK = {
 
 const DEVICE_OPTIONS = ["Pitaco", "Manovacuômetro", "Cinta"];
 
-const ALERT_METRIC_OPTIONS = ["DJ — Desempenho do Jogador", "FR — Freq. Respiratória"];
+// Só métricas com série temporal real por sessão (plataformoverviews) são avaliáveis
+// como tendência hoje — CGc/FR/PEmax/PImax ficam fora até terem essa granularidade.
+const ALERT_METRIC_OPTIONS = [
+  { code: "DJ", label: "DJ — Desempenho do Jogador" },
+  { code: "PJ", label: "PJ — Pontos da Jogada" },
+  { code: "EB", label: "EB — Escala de Borg" },
+];
+const METRIC_LABELS = ALERT_METRIC_OPTIONS.reduce((acc, m) => ({ ...acc, [m.code]: m.label }), {});
 const CONDITION_OPTIONS = ["Deterioração consecutiva", "Queda percentual >"];
+
+const describeAlert = (a) => {
+  const label = METRIC_LABELS[a.metric] || a.metric;
+  return a.condition === "Queda percentual >"
+    ? `${label}: queda percentual maior que ${a.triggerValue}% entre as duas últimas sessões.`
+    : `${label}: deterioração consecutiva em ${a.triggerValue} sessões.`;
+};
 
 // ─── Componente principal ─────────────────────────────────────────────────────
 
@@ -102,10 +118,11 @@ const ClinicalReport = () => {
   const [generating, setGenerating] = useState(false);
   const [generateError, setGenerateError] = useState(null);
 
-  // Aba "Alertas" — RF10 ainda não persiste no backend, é só o formulário local
+  // Aba "Alertas" (RF10)
   const [criteria, setCriteria] = useState([
-    { metric: "DJ — Desempenho do Jogador", condition: "Deterioração consecutiva", trigger: 5 },
+    { metric: "DJ", condition: "Deterioração consecutiva", triggerValue: 5 },
   ]);
+  const [savingCriteria, setSavingCriteria] = useState(false);
 
   const currentReport = reports.length ? reports[0] : null;
 
@@ -129,11 +146,19 @@ const ClinicalReport = () => {
     setPacientProfile(profile);
   };
 
+  const loadCriteria = async () => {
+    if (!context.patientId) return;
+    const data = await fetchAlertCriteria(context.patientId);
+    if (data.length) {
+      setCriteria(data.map((c) => ({ metric: c.metric, condition: c.condition, triggerValue: c.triggerValue })));
+    }
+  };
+
   const loadAll = async () => {
     if (!context.patientId) return;
     setLoading(true);
     try {
-      await Promise.all([loadHistory(), loadCharts()]);
+      await Promise.all([loadHistory(), loadCharts(), loadCriteria()]);
     } catch (_err) {
       setReports([]);
     } finally {
@@ -185,6 +210,18 @@ const ClinicalReport = () => {
 
   const updateCriteria = (idx, field, value) => {
     setCriteria(criteria.map((c, i) => (i === idx ? { ...c, [field]: value } : c)));
+  };
+
+  const handleSaveCriteria = async () => {
+    setSavingCriteria(true);
+    try {
+      await saveAlertCriteria(context.patientId, criteria);
+      context.addNotification("success", "Configuração de alertas salva com sucesso.");
+    } catch (err) {
+      context.addNotification("error", "Não foi possível salvar a configuração de alertas.");
+    } finally {
+      setSavingCriteria(false);
+    }
   };
 
   // ── Estados de loading / sem dados ────────────────────────────────────────
@@ -300,7 +337,7 @@ const ClinicalReport = () => {
                     <Typography sx={{ color: "#e65100", fontWeight: "bold", fontSize: 14 }}>Alerta ativo</Typography>
                     {currentReport.alerts.map((a, i) => (
                       <Typography key={i} sx={{ color: "#bf360c", fontSize: 13, mt: 0.3 }}>
-                        {a.metric}: {a.condition} em {a.consecutiveSessions} sessões consecutivas.
+                        {describeAlert(a)}
                       </Typography>
                     ))}
                   </Box>
@@ -546,12 +583,9 @@ const ClinicalReport = () => {
               <Typography sx={{ fontSize: 15, fontWeight: "bold", color: "#11192A", mb: 0.5 }}>
                 Configuração de alertas
               </Typography>
-              <Typography sx={{ fontSize: 13, color: "#9e9e9e", mb: 1 }}>
-                Critérios automáticos para sinalização clínica (padrão: 5 sessões consecutivas — RN04).
-              </Typography>
-              <Typography sx={{ fontSize: 12, color: "#e65100", mb: 3 }}>
-                Esta tela ainda é só o formulário (RF10) — hoje o backend sempre usa o critério
-                padrão (DJ, deterioração em 5 sessões). Salvar aqui ainda não altera o critério real.
+              <Typography sx={{ fontSize: 13, color: "#9e9e9e", mb: 3 }}>
+                Critérios automáticos para sinalização clínica. Sem nenhum critério configurado, o
+                sistema usa o padrão (DJ, deterioração em 5 sessões consecutivas — RN04).
               </Typography>
 
               {criteria.map((c, idx) => (
@@ -566,7 +600,7 @@ const ClinicalReport = () => {
                     <FormControl size="small" sx={{ minWidth: 220 }}>
                       <InputLabel>Métrica</InputLabel>
                       <Select sx={{ color: "#11192A" }} value={c.metric} label="Métrica" onChange={(e) => updateCriteria(idx, "metric", e.target.value)}>
-                        {ALERT_METRIC_OPTIONS.map((m) => (<MenuItem key={m} value={m}>{m}</MenuItem>))}
+                        {ALERT_METRIC_OPTIONS.map((m) => (<MenuItem key={m.code} value={m.code}>{m.label}</MenuItem>))}
                       </Select>
                     </FormControl>
                     <FormControl size="small" sx={{ minWidth: 220 }}>
@@ -575,12 +609,23 @@ const ClinicalReport = () => {
                         {CONDITION_OPTIONS.map((cond) => (<MenuItem key={cond} value={cond}>{cond}</MenuItem>))}
                       </Select>
                     </FormControl>
-                    <FormControl size="small" sx={{ minWidth: 160 }}>
-                      <InputLabel>Disparar após</InputLabel>
-                      <Select sx={{ color: "#11192A" }} value={c.trigger} label="Disparar após" onChange={(e) => updateCriteria(idx, "trigger", e.target.value)}>
-                        {[2, 3, 4, 5, 6].map((n) => (<MenuItem key={n} value={n}>{n} sessões</MenuItem>))}
-                      </Select>
-                    </FormControl>
+                    {c.condition === "Deterioração consecutiva" ? (
+                      <FormControl size="small" sx={{ minWidth: 160 }}>
+                        <InputLabel>Disparar após</InputLabel>
+                        <Select sx={{ color: "#11192A" }} value={c.triggerValue} label="Disparar após" onChange={(e) => updateCriteria(idx, "triggerValue", e.target.value)}>
+                          {[2, 3, 4, 5, 6].map((n) => (<MenuItem key={n} value={n}>{n} sessões</MenuItem>))}
+                        </Select>
+                      </FormControl>
+                    ) : (
+                      <TextField
+                        size="small"
+                        type="number"
+                        label="Queda mínima (%)"
+                        sx={{ minWidth: 160, "& input": { color: "#11192A" } }}
+                        value={c.triggerValue}
+                        onChange={(e) => updateCriteria(idx, "triggerValue", Number(e.target.value))}
+                      />
+                    )}
                   </Box>
                 </Paper>
               ))}
@@ -588,11 +633,18 @@ const ClinicalReport = () => {
               <Box sx={{ display: "flex", gap: 2, mt: 1 }}>
                 <Button
                   startIcon={<AddIcon />}
-                  onClick={() => setCriteria([...criteria, { metric: "DJ — Desempenho do Jogador", condition: "Deterioração consecutiva", trigger: 5 }])}
+                  onClick={() => setCriteria([...criteria, { metric: "DJ", condition: "Deterioração consecutiva", triggerValue: 5 }])}
                   sx={{ color: "#1e2b48", textTransform: "none", border: "1px dashed #1e2b48", borderRadius: 2 }}
                 >
                   Adicionar critério
                 </Button>
+                {savingCriteria ? (
+                  <LinearProgress sx={{ flex: 1, alignSelf: "center", "& .MuiLinearProgress-bar": { backgroundColor: "#1e2b48" } }} />
+                ) : (
+                  <Button variant="contained" sx={BTN} onClick={handleSaveCriteria}>
+                    Salvar configuração
+                  </Button>
+                )}
               </Box>
             </Box>
           )}

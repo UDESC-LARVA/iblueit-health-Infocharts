@@ -93,3 +93,21 @@ export const fetchGameParameterSeries = async (patientId) => {
     }))
     .sort((a, b) => a.timestamp - b.timestamp);
 };
+
+// ─── RF10 — Configuração de critérios de alerta por paciente ─────────────────────────────
+
+export const fetchAlertCriteria = async (patientId) => {
+  const response = await axios.get(`${BaseUrl()}/pacients/${patientId}/alertcriteria`, {
+    headers: headers(),
+  });
+  return response.data.data || [];
+};
+
+export const saveAlertCriteria = async (patientId, criteria) => {
+  const response = await axios.post(
+    `${BaseUrl()}/pacients/${patientId}/alertcriteria`,
+    { criteria: criteria.map((c) => ({ metric: c.metric, condition: c.condition, triggerValue: c.triggerValue })) },
+    { headers: headers() }
+  );
+  return response.data;
+};
