@@ -1,9 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from "react";
 // import SelectComponent from "../../select"
+import { Link, useLocation } from "react-router-dom";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import ScaleIcon from "@mui/icons-material/Scale";
@@ -15,6 +19,7 @@ import DeviceHubIcon from '@mui/icons-material/DeviceHub';
 import { Typography } from "@mui/material";
 import MenuItemTemplate from "./menu-item-template";
 import AddIcon from '@mui/icons-material/Add';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 
 import { pathRoutes } from "../../../providers/Routes";
 import SelectPatient from "./select-patient";
@@ -35,6 +40,7 @@ const divider = (
 
 const MenuItens = ({ permission, patientList }) => {
   const [openCategoryPosition, setOpenCategoryPosition] = useState(0);
+  const location = useLocation();
 
   return (
     <>
@@ -129,6 +135,43 @@ const MenuItens = ({ permission, patientList }) => {
         />
 
         {divider}
+        <Typography
+          variant="subtitle1"
+          sx={{
+            marginLeft: 3.5,
+            marginBottom: 0.5,
+            fontSize: 14,
+            opacity: 0.45,
+            fontWeight: "bold",
+          }}
+        >
+          Relatórios
+        </Typography>
+        <ListItemButton
+          component={Link}
+          to={pathRoutes.CLINICAL_REPORT}
+          selected={location.pathname === pathRoutes.CLINICAL_REPORT}
+          sx={[
+            {
+              margin: "auto",
+              borderRadius: 2,
+              width: 260,
+              height: 50,
+              backgroundColor: "#11192A",
+            }, {
+              "&.Mui-selected": { backgroundColor: "#243761" },
+              "&.Mui-selected:hover": { backgroundColor: "rgba(195,195,195,0.45)" },
+              "&:hover": { backgroundColor: "rgba(195,195,195,0.45)" },
+            },
+          ]}
+        >
+          <ListItemIcon sx={{ color: "white", opacity: 0.7, minWidth: 30 }}>
+            <AssessmentIcon sx={{ fontSize: 17 }} />
+          </ListItemIcon>
+          <ListItemText sx={{ opacity: 0.75 }} primary="Relatório Clínico" />
+        </ListItemButton>
+
+        {divider}
 
         {permission && (
           <>
@@ -146,7 +189,7 @@ const MenuItens = ({ permission, patientList }) => {
               Sistema
             </Typography>
             <MenuItemTemplate
-              position={5}
+              position={6}
               openCategoryPosition={openCategoryPosition}
               setOpenCategoryPosition={setOpenCategoryPosition}
               title="Sessão"
@@ -157,7 +200,7 @@ const MenuItens = ({ permission, patientList }) => {
               ]}
             />
             <MenuItemTemplate
-              position={6}
+              position={7}
               openCategoryPosition={openCategoryPosition}
               setOpenCategoryPosition={setOpenCategoryPosition}
               title="Conta do Paciente"

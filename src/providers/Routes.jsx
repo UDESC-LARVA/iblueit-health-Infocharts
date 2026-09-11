@@ -16,6 +16,7 @@ import MiniGamesResults from "../pages/miniGames/results";
 import MiniGamesComparative from "../pages/miniGames/comparative";
 import GameConfigurationCreatePage from "../pages/gameConfigurationCreate";
 import GameConfigurationPage from "../pages/gameConfigurationDefine";
+import ClinicalReport from "../pages/clinicalReport";
 
 
 export const pathRoutes = {
@@ -34,6 +35,7 @@ export const pathRoutes = {
 	MINI_GAMES_COMPARATIVE: '/miniGames/comparative',
 	GAME_CONFIGURATION_CREATE:'/gameConfiguration/create',
 	GAME_CONFIGURATION_DEFINE:'/gameConfiguration/define',
+	CLINICAL_REPORT: '/relatorio-clinico',
 }
 
 const routes = [{
@@ -110,6 +112,11 @@ const routes = [{
 	path: pathRoutes.GAME_CONFIGURATION_CREATE,
 	title: 'Recomendar parâmetros do Exergame',
 	component: () => (<GameConfigurationCreatePage />),
+	privated: true,
+},{
+	path: pathRoutes.CLINICAL_REPORT,
+	title: 'Relatório Clínico',
+	component: () => (<ClinicalReport />),
 	privated: true,
 },{
 	path: '*',
